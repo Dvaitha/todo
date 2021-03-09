@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dao.TodoDao;
+import com.example.demo.dao.TodoRepository;
 import com.example.demo.entities.Todo;
 import com.example.demo.services.TodoService;
 
@@ -13,36 +13,36 @@ import com.example.demo.services.TodoService;
 public class TodoServiceImpl implements TodoService{
 
 	@Autowired
-	private TodoDao todoDao;
+	private TodoRepository todoRepository;
 	
 	@Override
 	public List<Todo> getTodos() {
 		// TODO Auto-generated method stub
-		return todoDao.findAll();
+		return todoRepository.findAll();
 	}
 
 	@Override
 	public Todo getTodo(Long todoId) {
 		// TODO Auto-generated method stub
-		return todoDao.findById(todoId).get();
+		return todoRepository.findById(todoId).get();
 	}
 
 	@Override
 	public Todo addTodo(Todo todo) {
 		// TODO Auto-generated method stub
-		return todoDao.save(todo);
+		return todoRepository.save(todo);
 	}
 
 	@Override
 	public Todo updateTodo(Todo todo) {
 		// TODO Auto-generated method stub
-		return todoDao.save(todo);
+		return todoRepository.save(todo);
 	}
 
 	@Override
 	public void deleteTodo(Long todoId) {
 		// TODO Auto-generated method stub
-		Todo todo=todoDao.findById(todoId).get();
-		todoDao.delete(todo);
+		Todo todo=todoRepository.findById(todoId).get();
+		todoRepository.delete(todo);
 	}
 }
